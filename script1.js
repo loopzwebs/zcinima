@@ -70,11 +70,9 @@ $(document).ready(function(){
 
   //Login
   $('#doLogin').on('click', function (e) {
-console.log("Login Failed!");
-   // e.preventDefault();
-   // $('#loginModal').modal('hide');
+ 
     $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i>', ['center', 'info']));
-   // $('#messageModal').modal('show');
+ 
 
     if( $('#loginEmail').val() != '' && $('#loginPassword').val() != '' ){
       //login the user
@@ -86,7 +84,8 @@ console.log("Login Failed!");
         .then(function(authData) {
           auth = authData;
           $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
-         // $('#messageModal').modal('hide');
+		  window.location.href = '/account';
+       
         })
         .catch(function(error) {
           console.log("Login Failed!", error);
