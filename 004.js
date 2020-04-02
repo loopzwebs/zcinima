@@ -69,14 +69,15 @@ $(document).ready(function(){
   });
 
   //Login
-    $('#doLogin').on('click', function (e) {
+  $('#doLogin').on('click', function (e) {
  
-    $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i>', ['center', 'info']));
-    $('#loginEmail').prop('disabled', true);
-		 $('#loginPassword').prop('disabled', true);
-		 $('#doLogin').prop('disabled', true);
+    $('#doLogin').html('<i class="fa fa-cog fa-spin"></i> Sign In');
+ 
 
     if( $('#loginEmail').val() != '' && $('#loginPassword').val() != '' ){
+		   $('#loginEmail').prop('disabled', true);
+		 $('#loginPassword').prop('disabled', true);
+		 $('#doLogin').prop('disabled', true);
       //login the user
       var data = {
         email: $('#loginEmail').val(),
@@ -101,6 +102,7 @@ $(document).ready(function(){
     } else {
 		 $('#messageModalLabel').html('<div class="alert-danger">' + spanText('ERROR: Please fill out the fields!.', ['danger']) + '</div>')
 	}
+	  $('#doLogin').html('Sign In');
   });
 
   $('#logout').on('click', function(e) {
@@ -140,7 +142,7 @@ $(document).ready(function(){
         var info = data.val();
         if(user.displayName) {
           
-          $('.user-info').html('<span class="user-name">Hello, '+user.displayName+'</span>');
+          $('.user-info').html('<span class="signedin">Hello, '+user.displayName+'</span>');
         }  
       });
       contactsRef.child(user.uid).on('child_added', onChildAdd);
