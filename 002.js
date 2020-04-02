@@ -69,13 +69,12 @@ $(document).ready(function(){
   });
 
   //Login
-  $('#doLogin').on('click', function (e) {
+    $('#doLogin').on('click', function (e) {
  
     $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i>', ['center', 'info']));
-   
-		 $('#loginEmail').prop('disabled', false);
-		 $('#loginPassword').prop('disabled', false);
-		 $('#doLogin').prop('disabled', false);
+    $('#loginEmail').prop('disabled', true);
+		 $('#loginPassword').prop('disabled', true);
+		 $('#doLogin').prop('disabled', true);
 
     if( $('#loginEmail').val() != '' && $('#loginPassword').val() != '' ){
       //login the user
@@ -93,9 +92,10 @@ $(document).ready(function(){
         .catch(function(error) {
           console.log("Login Failed!", error);
           $('#messageModalLabel').html(spanText('ERROR: '+error.message, ['danger']));
-		  		 $('#loginEmail').prop('disabled', true);
-		 $('#loginPassword').prop('disabled', true);
-		 $('#doLogin').prop('disabled', true);
+		
+		 $('#loginEmail').prop('disabled', false);
+		 $('#loginPassword').prop('disabled', false);
+		 $('#doLogin').prop('disabled', false);
         });
     } else {
 		 $('#messageModalLabel').html(spanText('ERROR: Please fill out the fields!.', ['danger']))
