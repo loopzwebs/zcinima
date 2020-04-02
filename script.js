@@ -21,9 +21,9 @@ $(document).ready(function(){
   //Register
   $('#registerForm').on('submit', function (e) {
     e.preventDefault();
-    $('#registerModal').modal('hide');
+    // $('#registerModal').modal('hide');
     $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i>', ['center', 'info']));
-    $('#messageModal').modal('show');
+   //  $('#messageModal').modal('show');
     var data = {
       email: $('#registerEmail').val(), //get the email from Form
       firstName: $('#registerFirstName').val(), // get firstName
@@ -69,11 +69,11 @@ $(document).ready(function(){
   });
 
   //Login
-  $('#loginForm').on('submit', function (e) {
+  $('#doLogin').on('click', function (e) {
     e.preventDefault();
-    $('#loginModal').modal('hide');
+    //$('#loginModal').modal('hide');
     $('#messageModalLabel').html(spanText('<i class="fa fa-cog fa-spin"></i>', ['center', 'info']));
-    $('#messageModal').modal('show');
+    //$('#messageModal').modal('show');
 
     if( $('#loginEmail').val() != '' && $('#loginPassword').val() != '' ){
       //login the user
@@ -85,7 +85,7 @@ $(document).ready(function(){
         .then(function(authData) {
           auth = authData;
           $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
-          $('#messageModal').modal('hide');
+         // $('#messageModal').modal('hide');
         })
         .catch(function(error) {
           console.log("Login Failed!", error);
