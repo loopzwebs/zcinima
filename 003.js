@@ -85,20 +85,21 @@ $(document).ready(function(){
       firebase.auth().signInWithEmailAndPassword(data.email, data.password)
         .then(function(authData) {
           auth = authData;
-          $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
+          $('#messageModalLabel').html('<div class="alert-success">' + spanText('Success!', ['center', 'success']) + '</div>')
 		  window.location.href = '/account';
        
         })
         .catch(function(error) {
+	 
           console.log("Login Failed!", error);
-          $('#messageModalLabel').html(spanText('ERROR: '+error.message, ['danger']));
+          $('#messageModalLabel').html('<div class="alert-danger">' + spanText('ERROR: '+error.message, ['danger']) + '</div>');
 		
 		 $('#loginEmail').prop('disabled', false);
 		 $('#loginPassword').prop('disabled', false);
 		 $('#doLogin').prop('disabled', false);
         });
     } else {
-		 $('#messageModalLabel').html(spanText('ERROR: Please fill out the fields!.', ['danger']))
+		 $('#messageModalLabel').html('<div class="alert-danger">' + spanText('ERROR: Please fill out the fields!.', ['danger']) + '</div>')
 	}
   });
 
