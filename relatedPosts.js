@@ -146,7 +146,7 @@ function printRelatedLabels_thumbs() {
     var r = Math.floor((relatedTitles.length - 1) * Math.random());
     var i = 0;
     if (relatedTitles.length > 0) document.write('<h3 class="w3-leftbar" style="padding-left:10px;">' + relatedpoststitle + '</h3>');
-    document.write('<div class="w3-panel" id="style-3" style="overflow-x: scroll;  overflow-y: hidden;  white-space: nowrap;">');
+    document.write('<div class="w3-panel" id="style-3" style="overflow: auto;white-space: nowrap;">');
     while (i < relatedTitles.length && i < 20 && i < maxresults) {
         document.write('<div class="w3-col l2 m3 s6 cols" style="display: inline-block;float: none;"><div class="w3-topbar w3-round w3-border w3-border-theme w3-hover-theme" style="margin: 3px"><a style="');
         if (i != 0) document.write('"');
