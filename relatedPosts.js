@@ -148,7 +148,7 @@ function printRelatedLabels_thumbs() {
     if (relatedTitles.length > 0) document.write('<h3 class="w3-leftbar" style="padding-left:10px;">' + relatedpoststitle + '</h3>');
     document.write('<div class="w3-panel" id="style-3" style="overflow-x: scroll;  overflow-y: hidden;  white-space: nowrap;">');
     while (i < relatedTitles.length && i < 20 && i < maxresults) {
-        document.write('<div class="w3-col l2 m3 s6   cols"><div class="w3-topbar w3-round w3-border w3-border-theme w3-hover-theme" style="margin: 3px"><a style="');
+        document.write('<div class="w3-col l2 m3 s6 cols" style="display: inline-block;float: none;"><div class="w3-topbar w3-round w3-border w3-border-theme w3-hover-theme" style="margin: 3px"><a style="');
         if (i != 0) document.write('"');
         else document.write('"');
         document.write(' href="' + relatedUrls[r] + '"><div class="item-thumbnail-only"><div class="w3-bar" style="position: relative;"><img src="https://1.bp.blogspot.com/-4xR-kfrO0C4/Xon3ysxD0LI/AAAAAAAAAEE/SXFa_747EnEbp1lGewf6KIMswhrbNNGWwCLcBGAsYHQ/s1600/nothumb.png" style="width: 100%;filter: brightness(200%);    padding-right: 0px;"><img class="home-thumb" src="' + thumburl[r] + '" style="padding-right: 0px;"></div><div class="w3-bar"><span class="w3-bar-item" itemprop="name" style="padding: 5px;width: 100%;text-align: center;height:45px;font-size: 13px;">' + relatedTitles[r] + '</span></div></div></a></div></div>');
