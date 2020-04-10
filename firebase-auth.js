@@ -83,10 +83,14 @@ $(document).ready(function(){
 					if( passwords.password == passwords.cPassword ){
 
 						$('#doRegister').html('<i class="fa fa-cog fa-spin"></i> Sign Up');
+						setInputDisable({"registerFirstName": true, "registerLastName": true, "registerEmail": true, "registerPassword": true, "registerConfirmPassword": true, "doRegister": true});
+						     
 						var photoURL ="https://1.bp.blogspot.com/-EjMnEzEVEL4/XpBGZ2vKM6I/AAAAAAAAAE8/FFUznYG0OKYWSd_YEQORUPlR3eBvs_NvQCLcBGAsYHQ/s1600/avatar-png-1.png";
 
 						firebase.auth().createUserWithEmailAndPassword(data.email, passwords.password)
 						.then(function(user) {
+							setInputDisable({"registerFirstName": true, "registerLastName": true, "registerEmail": true, "registerPassword": true, "registerConfirmPassword": true, "doRegister": true});
+							$('#doRegister').html('Sign Up');
 							// var user = firebase.auth().currentUser;
 							user.updateProfile({
 								displayName: data.firstName + " " + data.lastName,
@@ -105,6 +109,8 @@ $(document).ready(function(){
 								}
 							 
 						}).catch(function(error) {
+							setInputDisable({"registerFirstName": true, "registerLastName": true, "registerEmail": true, "registerPassword": true, "registerConfirmPassword": true, "doRegister": true});
+							$('#doRegister').html('Sign Up');
 							//console.log(error.code);
 							//console.log(error.message);
 							$('#messageModalLabel').html('<div class="w3-panel w3-round w3-red"><p>'+error.message+'</p></div>');
