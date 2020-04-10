@@ -38,17 +38,17 @@ $(document).ready(function(){
 				// $('#navEmail').html();
 				// $('#navPhotoURL').html();
 				
-				console.log('User signed in Successfully');
+				//console.log('User signed in Successfully');
 				$('#messageModalLabel').html('<div class="w3-panel w3-round w3-green"><p>Success!</p></div>');
 				setInputDisable({"loginEmail": false, "loginPassword": false, "doLogin": false});
 					if( $('#isRedirect').val() == 'true' ){
-						window.location.href = '/account';
+						window.location.href = '/p/my-account.html';
 					}
 				
 				$('#doLogin').html('Sign In');
 			})
 			.catch(function(error) {
-				console.log("Login Failed!", error);
+				//console.log("Login Failed!", error);
   
 				$('#messageModalLabel').html('<div class="w3-panel w3-round w3-red"><p>'+ error.message + '</p></div>');
 				 
@@ -65,7 +65,7 @@ $(document).ready(function(){
 	  
 	$('#doRegister').on('click', function (e) {
 
-		console.log("doRegister clicked");
+		 
 
 		var data = {
 		email: $('#registerEmail').val(), //get the email from Form
@@ -83,7 +83,7 @@ $(document).ready(function(){
 					if( passwords.password == passwords.cPassword ){
 
 						$('#doRegister').html('<i class="fa fa-cog fa-spin"></i> Sign Up');
-						var photoURL ="https://via.placeholder.com/150";
+						var photoURL ="https://1.bp.blogspot.com/-EjMnEzEVEL4/XpBGZ2vKM6I/AAAAAAAAAE8/FFUznYG0OKYWSd_YEQORUPlR3eBvs_NvQCLcBGAsYHQ/s1600/avatar-png-1.png";
 
 						firebase.auth().createUserWithEmailAndPassword(data.email, passwords.password)
 						.then(function(user) {
@@ -93,30 +93,33 @@ $(document).ready(function(){
 								photoURL: photoURL
 							}).then(function() {
 								// Update successful.
-								console.log('User Profile Updated Successfully');
+								//console.log('User Profile Updated Successfully');
 							}).catch(function(error) {
-								console.log(' Profile not Updated ');
+								//console.log(' Profile not Updated ');
 								// An error happened.
 							});
-							console.log("user created", user);
-							$('#messageModalLabel').html('Success');
-							 window.location.href = '?/account';
+							//console.log("user created", user);
+							$('#messageModalLabel').html('<div class="w3-panel w3-round w3-green"><p>Account Created Successfully!.</p></div>');
+								if( $('#isRedirect').val() == 'true' ){
+									window.location.href = '/p/my-account.html';
+								}
+							 
 						}).catch(function(error) {
-							console.log(error.code);
-							console.log(error.message);
-							$('#messageModalLabel').html('ERROR: '+error.message);
+							//console.log(error.code);
+							//console.log(error.message);
+							$('#messageModalLabel').html('<div class="w3-panel w3-round w3-red"><p>'+error.message+'</p></div>');
 						});
 
 					} else {
 						//password and confirm password didn't match
-						$('#messageModalLabel').html("<div class='alert-danger'>ERROR: Passwords didn't match</div>");
+						$('#messageModalLabel').html('<div class="w3-panel w3-round w3-red"><p> Passwords didn\'t match</p></div>');
 					}
 				} else {
 					//password and confirm password didn't match
-					$('#messageModalLabel').html("<div class='alert-danger'>Enter a valid Email ID</div>");
+					$('#messageModalLabel').html('<div class="w3-panel w3-round w3-red"><p>Enter a valid Email ID</p></div>');
 				}
 			} else {
-				$('#messageModalLabel').html('<div class="alert-danger">ERROR: Please fill out the fields!.</div>');
+				$('#messageModalLabel').html('<div class="w3-panel w3-round w3-red"><p>Please fill out the fields!.</p></div>');
 			}
 
 	});
@@ -159,13 +162,13 @@ $(document).ready(function(){
 	
 
 firebase.auth().onAuthStateChanged(function(user) {
-console.log("onAuthStateChanged..");
+//console.log("onAuthStateChanged..");
 var user = firebase.auth().currentUser;
   if (user) {
 	
 	$('body').removeClass('auth-false').addClass('auth-true');
 
-    console.log("user avilable",user);
+   // console.log("user avilable",user);
 	 
     var displayName = user.displayName;
     var email = user.email;
@@ -175,7 +178,7 @@ var user = firebase.auth().currentUser;
     var uid = user.uid;
     var providerData = user.providerData;
 	
-	 console.log(displayName + " " + photoURL);
+	// console.log(displayName + " " + photoURL);
 	
 	if(photoURL == null){
 		photoURL = "https://1.bp.blogspot.com/-EjMnEzEVEL4/XpBGZ2vKM6I/AAAAAAAAAE8/FFUznYG0OKYWSd_YEQORUPlR3eBvs_NvQCLcBGAsYHQ/s1600/avatar-png-1.png";
@@ -198,7 +201,7 @@ var user = firebase.auth().currentUser;
   $('body').removeClass('auth-true').addClass('auth-false');
  
   
-  console.log("no user ");
+ // console.log("no user ");
     // User is signed out.
     // ...
   }
